@@ -1,0 +1,49 @@
+create database GIMMRESOURT
+go
+use GIMMRESOURT
+go
+
+create table users(
+iduser INT,
+NOM_USER varchar(45),
+APE_USER varchar(45),
+TEL_USER varchar(8),
+DIR_USER varchar(50),
+CORREO_USER varchar(50),
+PASS varchar (10)
+)
+
+
+create table habitaciones(
+idhabitacion INT,
+NUM_HABITACION INT,
+TIPO_HABITACION varchar(15),
+CAPACIDAD varchar(10),
+PRECIO DECIMAL
+)
+
+create table TipoHabitacion(
+idtipohabitacion INT,
+tipo varchar(50)
+)
+
+
+
+create table reservas(
+idreservas INT,
+DIA_RESERVA DATE,
+HORARIO_RESERVA TIME,
+CANT_PERSONAS INT,
+PRECIO DECIMAL,
+HORA_ENTRADA TIME,
+HORA SALIDA TIME
+
+)
+
+create table formaPago(
+idformaPago INT,
+TIPO varchar(10)
+)
+
+
+
