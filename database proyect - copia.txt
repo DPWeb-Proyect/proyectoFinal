@@ -4,18 +4,18 @@ use GIMMRESOURT
 go
 
 create table users(
-iduser INT,
+iduser INT not null auto_increment,
 NOM_USER varchar(45),
 APE_USER varchar(45),
 TEL_USER varchar(8),
 DIR_USER varchar(50),
 CORREO_USER varchar(50),
-PASS varchar (10)
+PASS varchar (50)
 )
 
 
 create table habitaciones(
-idhabitacion INT,
+idhabitacion INT not null auto_increment,
 NUM_HABITACION INT,
 TIPO_HABITACION varchar(15),
 CAPACIDAD varchar(10),
@@ -23,17 +23,18 @@ PRECIO DECIMAL
 )
 
 create table TipoHabitacion(
-idtipohabitacion INT,
+idtipohabitacion INT  not null auto_increment,
 tipo varchar(50)
 )
 
 
 
 create table reservas(
-idreservas INT,
+idreservas INT  not null auto_increment,
 DIA_RESERVA DATE,
 HORARIO_RESERVA TIME,
 CANT_PERSONAS INT,
+idformaPago int,
 PRECIO DECIMAL,
 HORA_ENTRADA TIME,
 HORA SALIDA TIME
@@ -41,9 +42,6 @@ HORA SALIDA TIME
 )
 
 create table formaPago(
-idformaPago INT,
+idformaPago INT  not null auto_increment,
 TIPO varchar(10)
 )
-
-
-
