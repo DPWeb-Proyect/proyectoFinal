@@ -285,7 +285,7 @@
  								<li>Teléfono de línea directa</li>
 								<li>Tv plasma</li>
 
-							</ul> 
+							</ul>
 						</p>
 							<a  class="btn btn-primary" href="">Read More</a>
 						</div>
@@ -308,7 +308,7 @@
 							<a href="">
 								<img src="images/blog/h6.jpg" alt="">
 							</a>
-							<p> 
+							<p>
 							<ul>
 									<li>Aire Acondicionado</li>
  									<li>Secador de pelo</li>
@@ -346,7 +346,7 @@
 								<ul>
 										<li>Habitación para dos personas</li>
 										<li>Sala de estar con sofá-cama para dos personas</li>
-										<li>Cuarto de baño con bañera jacuzzi y ducha</li> 
+										<li>Cuarto de baño con bañera jacuzzi y ducha</li>
  										<li>Aire acondicionado</li>
 										<li>Secador de pelo</li>
 										<li>Conexión a Internet de velocidad de línea (gratis)</li>
