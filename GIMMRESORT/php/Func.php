@@ -21,6 +21,7 @@
                     echo "Registro ingresado";
                 }
                 $conex->close;
+                header("Location:../index.php");
             break;
             case 2:
                 
