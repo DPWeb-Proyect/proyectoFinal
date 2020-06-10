@@ -10,6 +10,6 @@ header("Content-Type: text/html;charset=utf-8");
     if($conex->connect_errno){
         die ("Fallo al conectar a MySQL: (" . $conex->connect_errno . ") " . $conex->connect_error);
     }else{        
-        echo "Conexion establecida";
+        
     }
 ?>

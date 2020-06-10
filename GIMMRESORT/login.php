@@ -1,3 +1,28 @@
+<?php
+	include("./php/Conex.php");
+	session_start();
+	if($_SERVER["REQUEST_METHOD"]=="POST"){
+	
+	$mycorreo=$_POST["Ema"];
+	$pass=$_POST["Contra"];
+    $query="SELECT * FROM users WHERE CORREO_USER='".$mycorreo."' and PASS='".$pass."'";
+	$result=mysqli_query($conex,$query);	
+	$count=mysqli_num_rows($result);	
+    if ($count==1){				
+			$x1=1;			
+			$_SESSION['User']=$mycorreo;										
+			$conex->close;
+			header("Location:index.php");		
+    	}else{
+			$error="Your Login Name or Password is invalid";
+			$conex->close;
+		}	     
+	}else if(isset($_SESSION["User"])){
+		include("./php/Session.php"); 
+		$user=$u;
+	}
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +82,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
+							<a href="./index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 							<div class="btn-group">
@@ -86,11 +111,25 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
+								<li>
+								<?php 
+								if($x==1){
+								echo "<a href=''><i class='fa fa-user'></i>".$user."</a>";
+								}else{
+								echo"<a href=''><i class='fa fa-user'></i> Account</a>";	
+								}
+								?></li>
 								<!--<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>-->
 								<!--<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
 								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
+								<li><?php
+								if($x==1){
+									echo "<a href='./php/logout.php'><i class='fa fa-lock'></i>Logout</a>";
+								}else{
+									echo "<a href='login.php'><i class='fa fa-lock'></i>Login</a>";
+								}
+								?>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -112,7 +151,7 @@
             </div>
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
                 <li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html" class="active">Products</a></li>
@@ -146,13 +185,11 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login</h2>
-						<form action="#">
-							<input type="email" placeholder="Email" name="Correo" value=""/>
-							<input type="password" placeholder="Password" name="Pass" value=""/>
-							<span>
-								<input type="checkbox" class="checkbox">
-								Keep Session
-							</span>
+						<form action="" method="POST">
+							<input type="email" placeholder="Email" name="Ema" value=""/>
+							<input type="password" placeholder="Password" name="Contra" value=""/>
+							<?php echo "<p>$error </p>"?>
+							
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->
